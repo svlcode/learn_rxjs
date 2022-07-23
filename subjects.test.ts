@@ -1,4 +1,4 @@
-import { combineLatest, of, Subject, timeout } from 'rxjs';
+import {Subject, timeout } from 'rxjs';
 
 it('works', (done) => {
   const eventEmitter = new Subject<string>();

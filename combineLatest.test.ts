@@ -3,12 +3,13 @@ import { combineLatest, map, of, Subject, switchMap, timeout } from 'rxjs';
 test('combineLatest to simulate c = a + b', (done) => {
   const a = new Subject<number>();
   const b = new Subject<number>();
-  const checkMock = jest.fn();
+  const checkMock = jest.fn((value) => console.log(`result is: ${value}`));
+
   // create a third stream which emits values that are a result
   // of combining the latest values emited by the
   // two source streams (a and b Subjects)
   const sum = combineLatest([a, b]);
- 
+
   sum.subscribe({
     next: ([num1, num2]) => {
       const result = num1 + num2;
